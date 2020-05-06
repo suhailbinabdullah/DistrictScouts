@@ -19,18 +19,13 @@
 
     <fragment
         android:id="@+id/navigation_videos_library"
-        android:name="com.example.jkbsg.ui.notifications.NotificationsFragment"
-        android:label="@string/title_video_library"
-        tools:layout="@layout/fragment_notifications" />
-    <fragment
-        android:id="@+id/navigation_settings"
         android:name="com.example.jkbsg.ui.videos.VideosFragment"
         android:label="@string/title_video_library"
         tools:layout="@layout/fragment_videos" />
 
     <fragment
-        android:id="@+id/navigation_introduction"
-        android:name="com.example.jkbsg.ui.introduction.Introduction"
-        android:label="@string/title_video_library"
-        tools:layout="@layout/fragment_videos" />
+        android:id="@+id/navigation_photo_library"
+        android:name="com.example.jkbsg.ui.photos.PhotosFragment"
+        android:label="@string/title_photo_library"
+        tools:layout="@layout/fragment_photos" />
 </navigation>

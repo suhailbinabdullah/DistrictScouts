@@ -1,4 +1,4 @@
-package com.example.jkbsg.pojos;
+package com.example.jkbsg.pojos.home;
 
 import com.google.gson.annotations.SerializedName;
 

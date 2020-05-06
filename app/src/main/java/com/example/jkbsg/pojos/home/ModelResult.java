@@ -1,5 +1,6 @@
-package com.example.jkbsg.pojos;
+package com.example.jkbsg.pojos.home;
 
+import com.example.jkbsg.pojos.home.Model;
 import com.google.gson.annotations.SerializedName;
 
 import java.io.Serializable;

@@ -11,8 +11,8 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.jkbsg.R;
-import com.example.jkbsg.pojos.Model;
-import com.example.jkbsg.pojos.ModelResult;
+import com.example.jkbsg.pojos.home.Model;
+import com.example.jkbsg.pojos.home.ModelResult;
 
 public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.ViewHolder> {
     private Context context;

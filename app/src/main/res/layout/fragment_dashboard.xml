@@ -74,6 +74,7 @@
         android:layout_columnWeight="1"
         tools:targetApi="lollipop">
         <Button
+            android:id="@+id/law_promise"
             android:text="Law/Promise"
             android:background="@drawable/cornor"
             android:textColor="@android:color/white"
@@ -95,6 +96,7 @@
         android:layout_columnWeight="1"
         tools:targetApi="lollipop">
         <Button
+            android:id="@+id/prayer_flag_song"
             android:text="Prayer &amp; Flag Song"
             android:background="@drawable/cornor"
             android:textColor="@android:color/white"

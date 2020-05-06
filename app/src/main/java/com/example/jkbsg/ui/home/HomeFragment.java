@@ -13,8 +13,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.example.jkbsg.R;
-import com.example.jkbsg.pojos.Model;
-import com.example.jkbsg.pojos.ModelResult;
+import com.example.jkbsg.pojos.home.Model;
+import com.example.jkbsg.pojos.home.ModelResult;
 
 import java.util.ArrayList;
 import java.util.List;

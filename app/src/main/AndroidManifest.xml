@@ -9,10 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme.NoActionBar">
-        <activity
-            android:name=".activities.introduction.Introduction"
-            android:theme="@style/SettingsTheme" />
-
+        <activity android:name=".activities.post_youtube.PostYoutubeActivity"
+            android:theme="@style/SettingsTheme"/>
         <activity
             android:name=".activities.post_detail.PostDetail"
             android:theme="@style/SettingsTheme" />
@@ -25,8 +23,7 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity>
-        <!--  Sample AdMob App ID: ca-app-pub-9581166139575953~3149353582 -->
+        </activity> <!-- Sample AdMob App ID: ca-app-pub-9581166139575953~3149353582 -->
         <meta-data
             android:name="com.google.android.gms.ads.APPLICATION_ID"
             android:value="ca-app-pub-9581166139575953~3149353582" />

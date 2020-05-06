@@ -1,6 +1,8 @@
 package com.example.jkbsg.activities.post_detail;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
+import android.webkit.WebSettings;
 import android.webkit.WebView;
 
 import androidx.annotation.Nullable;
@@ -16,17 +18,21 @@ public class PostDetail extends AppCompatActivity {
 
     private WebView webView;
     private String sourceButton;
+    private WebSettings webSettings;
 
 
+    @SuppressLint("SetJavaScriptEnabled")
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.post_detail);
         webView = findViewById(R.id.web_view);
+        webSettings = webView.getSettings();
+        webSettings.setJavaScriptEnabled(true);
 
         sourceButton = AppExtensions.getIntentString(savedInstanceState, getIntent(), AppConstants.KEY_SOURCE_ACTIVITY);
 
-        if(getSupportActionBar()!=null){
+        if (getSupportActionBar() != null) {
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
             getSupportActionBar().setDisplayShowHomeEnabled(true);
             getSupportActionBar().setTitle(sourceButton);
@@ -41,6 +47,14 @@ public class PostDetail extends AppCompatActivity {
                 break;
             case AppConstants.KEY_FUNDAMENTALS:
                 webView.loadData(HtmlData.KEY_FUNDAMENTALS, "text/html; charset=UTF-8", null);
+                break;
+            case AppConstants.KEY_PRAYER_FLAG_SONG:
+                webView.loadData(HtmlData.KEY_PRAYER_SONG, "text/html; charset=UTF-8", null);
+                break;
+
+            case AppConstants.KEY_LAW_PROMISE:
+                webView.loadData(HtmlData.KEY_LAW_PROMISE, "text/html; charset=UTF-8", null);
+                break;
         }
     }
 

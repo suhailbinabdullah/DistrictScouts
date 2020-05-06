@@ -22,6 +22,8 @@ public class DashboardFragment extends Fragment implements View.OnClickListener 
     private Button introductionButton;
     private Button whatAreWe;
     private Button fundamentals;
+    private Button prayerFlagSong;
+    private Button lawPromise;
     private Intent intent;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
@@ -31,10 +33,14 @@ public class DashboardFragment extends Fragment implements View.OnClickListener 
         introductionButton = root.findViewById(R.id.intro_button);
         whatAreWe = root.findViewById(R.id.what_are_we);
         fundamentals = root.findViewById(R.id.fundamentals);
+        prayerFlagSong=root.findViewById(R.id.prayer_flag_song);
+        lawPromise=root.findViewById(R.id.law_promise);
 
         introductionButton.setOnClickListener(this);
         whatAreWe.setOnClickListener(this);
         fundamentals.setOnClickListener(this);
+        prayerFlagSong.setOnClickListener(this);
+        lawPromise.setOnClickListener(this);
         return root;
     }
 
@@ -58,6 +64,18 @@ public class DashboardFragment extends Fragment implements View.OnClickListener 
             case R.id.fundamentals:
                 intent = new Intent(context, PostDetail.class);
                 intent.putExtra(AppConstants.KEY_SOURCE_ACTIVITY, AppConstants.KEY_FUNDAMENTALS);
+                startActivity(intent);
+                break;
+
+            case R.id.prayer_flag_song:
+                intent = new Intent(context, PostDetail.class);
+                intent.putExtra(AppConstants.KEY_SOURCE_ACTIVITY, AppConstants.KEY_PRAYER_FLAG_SONG);
+                startActivity(intent);
+                break;
+
+            case R.id.law_promise:
+                intent = new Intent(context, PostDetail.class);
+                intent.putExtra(AppConstants.KEY_SOURCE_ACTIVITY, AppConstants.KEY_LAW_PROMISE);
                 startActivity(intent);
                 break;
         }
