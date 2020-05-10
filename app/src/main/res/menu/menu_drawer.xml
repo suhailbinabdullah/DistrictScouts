@@ -11,6 +11,54 @@
                     android:id="@+id/nav_home"
                     android:icon="@drawable/ic_home_black_24dp"
                     android:title="@string/title_home" />
+
+                <item
+                    android:id="@+id/nav_dashboard"
+                    android:icon="@drawable/ic_dashboard_black_24dp"
+                    android:title="@string/title_dashboard" />
+
+                <item
+                    android:id="@+id/nav_videos"
+                    android:icon="@drawable/ic_video_library"
+                    android:title="@string/title_video_library" />
+
+
+                <item
+                    android:id="@+id/nav_photos"
+                    android:icon="@drawable/ic_photo_library"
+                    android:title="@string/title_photo_library" />
+            </menu>
+        </item>
+
+        <item android:title="About">
+            <menu>
+
+                <item
+                    android:id="@+id/nav_budgam_scouts"
+                    android:icon="@drawable/ic_info"
+                    android:title="@string/title_budgam_scouts" />
+
+                <item
+                    android:id="@+id/nav_developer"
+                    android:icon="@drawable/ic_person"
+                    android:title="@string/title_developer" />
+
+            </menu>
+        </item>
+
+        <item android:title="Account Management">
+            <menu>
+
+                <item
+                    android:id="@+id/nav_login"
+                    android:icon="@drawable/ic_login"
+                    android:title="@string/title_login" />
+
+               <!-- <item
+                    android:id="@+id/nav_logout"
+                    android:icon="@drawable/ic_logout"
+                    android:title="@string/title_logout" />-->
+
             </menu>
         </item>
     </group>

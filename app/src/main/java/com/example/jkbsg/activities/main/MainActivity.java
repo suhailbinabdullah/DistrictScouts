@@ -91,9 +91,23 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         // Handle navigation view item clicks here.
         int id = item.getItemId();
         // Switch Fragments in a ViewPager on clicking items in Navigation Drawer
-        if (id == R.id.nav_home) {
-            Toast.makeText(this, "Home clicked", Toast.LENGTH_SHORT).show();
-            navController.navigate(R.id.navigation_dashboard);
+
+        switch (id){
+            case R.id.nav_home:
+                navController.navigate(R.id.navigation_home);
+                break;
+            case R.id.nav_dashboard:
+                navController.navigate(R.id.navigation_dashboard);
+                break;
+            case R.id.nav_videos:
+                navController.navigate(R.id.navigation_videos_library);
+                break;
+            case R.id.nav_photos:
+                navController.navigate(R.id.navigation_photo_library);
+                break;
+            case R.id.nav_budgam_scouts:
+                //navController.navigate(R.id.navigation_dashboard);
+                break;
         }
 
         DrawerLayout drawer = findViewById(R.id.drawer_layout);

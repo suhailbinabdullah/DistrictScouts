@@ -1,133 +1,188 @@
 <?xml version="1.0" encoding="utf-8"?>
-<GridLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:columnCount="2">
+    android:layout_height="match_parent">
 
-    <LinearLayout
-        android:layout_width="0dp"
+    <GridLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_columnWeight="1"
-        tools:targetApi="lollipop">
-        <Button
-            android:id="@+id/intro_button"
-            android:text="Introduction"
-            android:background="@drawable/cornor"
-            android:textColor="@android:color/white"
-            android:layout_height="100dp"
-            android:layout_margin="4dp"
-            android:clickable="true"
-            android:focusable="true"
-            android:padding="10dp"
-            android:foreground="?android:attr/selectableItemBackground"
-            style="@style/TextAppearance.AppCompat.Title"
-            android:layout_width="match_parent"
-            tools:targetApi="m" />
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_columnWeight="1"
-        tools:targetApi="lollipop">
-        <Button
-            android:id="@+id/what_are_we"
-            android:text="What are We?"
-            android:background="@drawable/cornor"
-            android:textColor="@android:color/white"
-            android:layout_height="100dp"
-            android:layout_margin="4dp"
-            android:clickable="true"
-            android:focusable="true"
-            android:padding="10dp"
-            android:foreground="?android:attr/selectableItemBackground"
-            style="@style/TextAppearance.AppCompat.Title"
-            android:layout_width="match_parent"
-            tools:targetApi="m" />
-    </LinearLayout>
+        android:columnCount="2">
 
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_columnWeight="1"
+            tools:targetApi="lollipop">
 
-    <LinearLayout
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_columnWeight="1"
-        tools:targetApi="lollipop">
-        <Button
-            android:id="@+id/fundamentals"
-            android:text="Fundamentals"
-            android:background="@drawable/cornor"
-            android:textColor="@android:color/white"
-            android:layout_height="100dp"
-            android:layout_margin="4dp"
-            android:clickable="true"
-            android:focusable="true"
-            android:padding="10dp"
-            android:foreground="?android:attr/selectableItemBackground"
-            style="@style/TextAppearance.AppCompat.Title"
-            android:layout_width="match_parent"
-            tools:targetApi="m" />
-    </LinearLayout>
+            <Button
+                android:id="@+id/intro_button"
+                style="@style/TextAppearance.AppCompat.Title"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:layout_margin="4dp"
+                android:background="@drawable/cornor"
+                android:clickable="true"
+                android:focusable="true"
+                android:foreground="?android:attr/selectableItemBackground"
+                android:padding="10dp"
+                android:text="Introduction"
+                android:textColor="@android:color/white"
+                tools:targetApi="m" />
+        </LinearLayout>
 
-    <LinearLayout
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_columnWeight="1"
-        tools:targetApi="lollipop">
-        <Button
-            android:id="@+id/law_promise"
-            android:text="Law/Promise"
-            android:background="@drawable/cornor"
-            android:textColor="@android:color/white"
-            android:layout_height="100dp"
-            android:layout_margin="4dp"
-            android:clickable="true"
-            android:focusable="true"
-            android:padding="10dp"
-            android:foreground="?android:attr/selectableItemBackground"
-            style="@style/TextAppearance.AppCompat.Title"
-            android:layout_width="match_parent"
-            tools:targetApi="m" />
-    </LinearLayout>
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_columnWeight="1"
+            tools:targetApi="lollipop">
 
+            <Button
+                android:id="@+id/what_are_we"
+                style="@style/TextAppearance.AppCompat.Title"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:layout_margin="4dp"
+                android:background="@drawable/cornor"
+                android:clickable="true"
+                android:focusable="true"
+                android:foreground="?android:attr/selectableItemBackground"
+                android:padding="10dp"
+                android:text="What are We?"
+                android:textColor="@android:color/white"
+                tools:targetApi="m" />
+        </LinearLayout>
 
-    <LinearLayout
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_columnWeight="1"
-        tools:targetApi="lollipop">
-        <Button
-            android:id="@+id/prayer_flag_song"
-            android:text="Prayer &amp; Flag Song"
-            android:background="@drawable/cornor"
-            android:textColor="@android:color/white"
-            android:layout_height="100dp"
-            android:layout_margin="4dp"
-            android:clickable="true"
-            android:focusable="true"
-            android:padding="10dp"
-            android:foreground="?android:attr/selectableItemBackground"
-            style="@style/TextAppearance.AppCompat.Title"
-            android:layout_width="match_parent"
-            tools:targetApi="m" />
-    </LinearLayout>
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_columnWeight="1"
+            tools:targetApi="lollipop">
 
-    <LinearLayout
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_columnWeight="1"
-        tools:targetApi="lollipop">
-        <Button
-            android:text="Downloads"
-            android:background="@drawable/cornor"
-            android:textColor="@android:color/white"
-            android:layout_height="100dp"
-            android:layout_margin="4dp"
-            android:clickable="true"
-            android:padding="10dp"
-            android:focusable="true"
-            android:foreground="?android:attr/selectableItemBackground"
-            style="@style/TextAppearance.AppCompat.Title"
-            android:layout_width="match_parent"
-            tools:targetApi="m" />
-    </LinearLayout>
-</GridLayout>
+            <Button
+                android:id="@+id/fundamentals"
+                style="@style/TextAppearance.AppCompat.Title"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:layout_margin="4dp"
+                android:background="@drawable/cornor"
+                android:clickable="true"
+                android:focusable="true"
+                android:foreground="?android:attr/selectableItemBackground"
+                android:padding="10dp"
+                android:text="Fundamentals"
+                android:textColor="@android:color/white"
+                tools:targetApi="m" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_columnWeight="1"
+            tools:targetApi="lollipop">
+
+            <Button
+                android:id="@+id/law_promise"
+                style="@style/TextAppearance.AppCompat.Title"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:layout_margin="4dp"
+                android:background="@drawable/cornor"
+                android:clickable="true"
+                android:focusable="true"
+                android:foreground="?android:attr/selectableItemBackground"
+                android:padding="10dp"
+                android:text="Law/Promise"
+                android:textColor="@android:color/white"
+                tools:targetApi="m" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_columnWeight="1"
+            tools:targetApi="lollipop">
+
+            <Button
+                android:id="@+id/prayer_flag_song"
+                style="@style/TextAppearance.AppCompat.Title"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:layout_margin="4dp"
+                android:background="@drawable/cornor"
+                android:clickable="true"
+                android:focusable="true"
+                android:foreground="?android:attr/selectableItemBackground"
+                android:padding="10dp"
+                android:text="Prayer &amp; Flag Song"
+                android:textColor="@android:color/white"
+                tools:targetApi="m" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_columnWeight="1"
+            tools:targetApi="lollipop">
+
+            <Button
+                style="@style/TextAppearance.AppCompat.Title"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:layout_margin="4dp"
+                android:background="@drawable/cornor"
+                android:clickable="true"
+                android:focusable="true"
+                android:foreground="?android:attr/selectableItemBackground"
+                android:padding="10dp"
+                android:text="Downloads"
+                android:textColor="@android:color/white"
+                tools:targetApi="m" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_columnWeight="1"
+            tools:targetApi="lollipop">
+
+            <Button
+                android:id="@+id/district_body"
+                style="@style/TextAppearance.AppCompat.Title"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:layout_margin="4dp"
+                android:background="@drawable/cornor"
+                android:clickable="true"
+                android:focusable="true"
+                android:foreground="?android:attr/selectableItemBackground"
+                android:padding="10dp"
+                android:text="District Body"
+                android:textColor="@android:color/white"
+                tools:targetApi="m" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_columnWeight="1"
+            tools:targetApi="lollipop">
+
+            <Button
+                android:id="@+id/district_aims"
+                style="@style/TextAppearance.AppCompat.Title"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:layout_margin="4dp"
+                android:background="@drawable/cornor"
+                android:clickable="true"
+                android:focusable="true"
+                android:foreground="?android:attr/selectableItemBackground"
+                android:padding="10dp"
+                android:text="Aims of District"
+                android:textColor="@android:color/white"
+                tools:targetApi="m" />
+        </LinearLayout>
+    </GridLayout>
+</ScrollView>

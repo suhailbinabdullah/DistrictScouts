@@ -1,6 +1,8 @@
 package com.example.jkbsg.ui.videos;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,11 +14,15 @@ import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.example.jkbsg.R;
-import com.example.jkbsg.pojos.youtube.YoutubeModel;
-import com.example.jkbsg.pojos.youtube.YoutubeResults;
+import com.example.jkbsg.pojos.albums.AlbumResults;
+import com.example.jkbsg.repository.APIInterface;
+import com.example.jkbsg.repository.APIService;
+import com.example.jkbsg.utils.AppExtensions;
+import com.github.ybq.android.spinkit.SpinKitView;
 
-import java.util.ArrayList;
-import java.util.List;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -28,6 +34,7 @@ public class VideosFragment extends Fragment {
     private VideosAdapter videosAdapter;
     private RecyclerView recyclerView;
     private SwipeRefreshLayout swipeRefreshLayout;
+    private SpinKitView loader;
 
 
     @Override
@@ -38,43 +45,51 @@ public class VideosFragment extends Fragment {
         context = view.getContext();
         recyclerView = view.findViewById(R.id.recycler_view);
         swipeRefreshLayout = view.findViewById(R.id.swipe_refresh_layout);
+        loader = view.findViewById(R.id.loader);
 
         recyclerView.setLayoutManager(new GridLayoutManager(context, 3));
 
-        YoutubeResults youtubeResultsList = new YoutubeResults();
+        new GetVideoAlbums().execute();
 
-        List<YoutubeModel> youtubeModels = new ArrayList<>();
-
-        YoutubeModel youtubeModel = new YoutubeModel();
-
-        youtubeModel.setId("1");
-        youtubeModel.setVideoId("<iframe width=\"420\" height=\"315\"\n" +
-                "src=\"https://www.youtube.com/embed/tgbNymZ7vqY\">\n" +
-                "</iframe>");
-        youtubeModel.setYoutubeAlbumName("Album Example");
-        youtubeModels.add(youtubeModel);
-        youtubeModels.add(youtubeModel);
-        youtubeModels.add(youtubeModel);
-        youtubeModels.add(youtubeModel);
-        youtubeModels.add(youtubeModel);
-        youtubeModels.add(youtubeModel);
-        youtubeModels.add(youtubeModel);
-        youtubeModels.add(youtubeModel);
-        youtubeModels.add(youtubeModel);
-        youtubeModels.add(youtubeModel);
-        youtubeModels.add(youtubeModel);
-        youtubeModels.add(youtubeModel);
-        youtubeModels.add(youtubeModel);
-        youtubeModels.add(youtubeModel);
-        youtubeModels.add(youtubeModel);
-
-        youtubeResultsList.setYoutubeModelResults(youtubeModels);
-
-
-        videosAdapter = new VideosAdapter(context, youtubeResultsList);
-        recyclerView.setAdapter(videosAdapter);
-
-
+        swipeRefreshLayout.setOnRefreshListener(() -> new GetVideoAlbums().execute());
         return view;
+    }
+
+    @SuppressLint("StaticFieldLeak")
+    class GetVideoAlbums extends AsyncTask<String, Void, Void> {
+
+        private AlbumResults youtubeResultsList = new AlbumResults();
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+            loader.setVisibility(View.VISIBLE);
+        }
+
+        @Override
+        protected Void doInBackground(String... strings) {
+            APIInterface apiInterface = APIService.getClient(context).create(APIInterface.class);
+            Call<AlbumResults> callGetVideoAlbums = apiInterface.getVideoAlbumsAndData("V");
+            callGetVideoAlbums.enqueue(new Callback<AlbumResults>() {
+                @Override
+                public void onResponse(Call<AlbumResults> call, Response<AlbumResults> response) {
+                    if (response.code() == 200) {
+                        youtubeResultsList = response.body();
+                        videosAdapter = new VideosAdapter(context, youtubeResultsList);
+                        recyclerView.setAdapter(videosAdapter);
+                    } else AppExtensions.showToast(context, "Something went wrong, try later");
+                    loader.setVisibility(View.GONE);
+                    swipeRefreshLayout.setRefreshing(false);
+                }
+
+                @Override
+                public void onFailure(Call<AlbumResults> call, Throwable t) {
+                    AppExtensions.showToast(context, "Something went wrong, try later");
+                    loader.setVisibility(View.GONE);
+                    swipeRefreshLayout.setRefreshing(false);
+                }
+            });
+            return null;
+        }
     }
 }

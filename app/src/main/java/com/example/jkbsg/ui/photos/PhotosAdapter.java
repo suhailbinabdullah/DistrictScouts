@@ -1,4 +1,4 @@
-package com.example.jkbsg.ui.videos;
+package com.example.jkbsg.ui.photos;
 
 import android.content.Context;
 import android.content.Intent;
@@ -14,34 +14,35 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.example.jkbsg.R;
+import com.example.jkbsg.activities.post_photos.PostPhotos;
 import com.example.jkbsg.activities.post_videos.PostYoutubeActivity;
 import com.example.jkbsg.pojos.albums.AlbumModel;
 import com.example.jkbsg.pojos.albums.AlbumResults;
 import com.example.jkbsg.utils.AppConstants;
 
-public class VideosAdapter extends RecyclerView.Adapter<VideosAdapter.ViewHolder> {
-    private String TAG = VideosAdapter.class.getSimpleName();
+public class PhotosAdapter extends RecyclerView.Adapter<PhotosAdapter.ViewHolder> {
+    private String TAG = PhotosAdapter.class.getSimpleName();
 
     private Context context;
-    private AlbumResults youtubeResults;
+    private AlbumResults photosResults;
 
-    public VideosAdapter(Context context, AlbumResults youtubeResultsList) {
+    public PhotosAdapter(Context context, AlbumResults photosResults) {
         this.context = context;
-        this.youtubeResults = youtubeResultsList;
+        this.photosResults = photosResults;
     }
 
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.video_album_list, parent, false);
+        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.photo_album_list, parent, false);
         return new ViewHolder(v);
     }
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        AlbumModel currentItem = youtubeResults.getResults().get(position);
+        AlbumModel currentItem = photosResults.getResults().get(position);
         holder.textView.setText(currentItem.getAlbumName());
-        holder.textViewSize.setText(currentItem.getAlbumData().size() + " Videos");
+        holder.textViewSize.setText(currentItem.getAlbumData().size() + " Photos");
 
 
         if (currentItem.getAlbumImageUrl() == null) {
@@ -56,7 +57,7 @@ public class VideosAdapter extends RecyclerView.Adapter<VideosAdapter.ViewHolder
 
 
         holder.cardView.setOnClickListener(view -> {
-            Intent intent = new Intent(context, PostYoutubeActivity.class);
+            Intent intent = new Intent(context, PostPhotos.class);
             intent.putExtra(AppConstants.KEY_CURRENT_OBJECT, currentItem);
             context.startActivity(intent);
         });
@@ -64,7 +65,7 @@ public class VideosAdapter extends RecyclerView.Adapter<VideosAdapter.ViewHolder
 
     @Override
     public int getItemCount() {
-        return youtubeResults.getResults().size();
+        return photosResults.getResults().size();
     }
 
     class ViewHolder extends RecyclerView.ViewHolder {
@@ -72,7 +73,7 @@ public class VideosAdapter extends RecyclerView.Adapter<VideosAdapter.ViewHolder
         private CardView cardView;
         private ImageView albumImage;
 
-        public ViewHolder(@NonNull View itemView) {
+        ViewHolder(@NonNull View itemView) {
             super(itemView);
             textView = itemView.findViewById(R.id.text_view);
             textViewSize = itemView.findViewById(R.id.size);

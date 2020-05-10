@@ -24,6 +24,8 @@ public class DashboardFragment extends Fragment implements View.OnClickListener 
     private Button fundamentals;
     private Button prayerFlagSong;
     private Button lawPromise;
+    private Button distBody;
+    private Button distAims;
     private Intent intent;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
@@ -35,12 +37,16 @@ public class DashboardFragment extends Fragment implements View.OnClickListener 
         fundamentals = root.findViewById(R.id.fundamentals);
         prayerFlagSong=root.findViewById(R.id.prayer_flag_song);
         lawPromise=root.findViewById(R.id.law_promise);
+        distBody=root.findViewById(R.id.district_body);
+        distAims=root.findViewById(R.id.district_aims);
 
         introductionButton.setOnClickListener(this);
         whatAreWe.setOnClickListener(this);
         fundamentals.setOnClickListener(this);
         prayerFlagSong.setOnClickListener(this);
         lawPromise.setOnClickListener(this);
+        distBody.setOnClickListener(this);
+        distAims.setOnClickListener(this);
         return root;
     }
 
@@ -76,6 +82,18 @@ public class DashboardFragment extends Fragment implements View.OnClickListener 
             case R.id.law_promise:
                 intent = new Intent(context, PostDetail.class);
                 intent.putExtra(AppConstants.KEY_SOURCE_ACTIVITY, AppConstants.KEY_LAW_PROMISE);
+                startActivity(intent);
+                break;
+
+            case R.id.district_body:
+                intent = new Intent(context, PostDetail.class);
+                intent.putExtra(AppConstants.KEY_SOURCE_ACTIVITY, AppConstants.KEY_DIST_BODY);
+                startActivity(intent);
+                break;
+
+            case R.id.district_aims:
+                intent = new Intent(context, PostDetail.class);
+                intent.putExtra(AppConstants.KEY_SOURCE_ACTIVITY, AppConstants.KEY_DIST_AIMS);
                 startActivity(intent);
                 break;
         }

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activities.post_videos.PostYoutubeActivity">
+    tools:context=".activities.post_photos.PostPhotos">
 
     <TextView
         android:id="@+id/text_view"
@@ -16,16 +16,10 @@
         style="@style/TextAppearance.AppCompat.Caption"
         android:layout_height="wrap_content"/>
 
-    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+    <androidx.recyclerview.widget.RecyclerView
         android:layout_below="@id/text_view"
-        android:id="@+id/swipe_refresh_layout"
+        android:id="@+id/recycler_view"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recycler_view"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"/>
-    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+        android:layout_height="match_parent"/>
 
 </RelativeLayout>
