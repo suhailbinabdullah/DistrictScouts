@@ -26,6 +26,7 @@ public class DashboardFragment extends Fragment implements View.OnClickListener 
     private Button lawPromise;
     private Button distBody;
     private Button distAims;
+    private Button scoutingInJk;
     private Intent intent;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
@@ -39,6 +40,7 @@ public class DashboardFragment extends Fragment implements View.OnClickListener 
         lawPromise=root.findViewById(R.id.law_promise);
         distBody=root.findViewById(R.id.district_body);
         distAims=root.findViewById(R.id.district_aims);
+        scoutingInJk=root.findViewById(R.id.scouting_in_jk);
 
         introductionButton.setOnClickListener(this);
         whatAreWe.setOnClickListener(this);
@@ -47,6 +49,7 @@ public class DashboardFragment extends Fragment implements View.OnClickListener 
         lawPromise.setOnClickListener(this);
         distBody.setOnClickListener(this);
         distAims.setOnClickListener(this);
+        scoutingInJk.setOnClickListener(this);
         return root;
     }
 
@@ -94,6 +97,12 @@ public class DashboardFragment extends Fragment implements View.OnClickListener 
             case R.id.district_aims:
                 intent = new Intent(context, PostDetail.class);
                 intent.putExtra(AppConstants.KEY_SOURCE_ACTIVITY, AppConstants.KEY_DIST_AIMS);
+                startActivity(intent);
+                break;
+
+            case R.id.scouting_in_jk:
+                intent = new Intent(context, PostDetail.class);
+                intent.putExtra(AppConstants.KEY_SOURCE_ACTIVITY, AppConstants.KEY_SCOUTING_IN_JK);
                 startActivity(intent);
                 break;
         }

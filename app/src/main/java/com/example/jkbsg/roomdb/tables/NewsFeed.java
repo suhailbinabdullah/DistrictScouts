@@ -1,33 +1,35 @@
-package com.example.jkbsg.pojos.home;
+package com.example.jkbsg.roomdb.tables;
 
-import com.google.gson.annotations.SerializedName;
+import androidx.annotation.NonNull;
+import androidx.room.ColumnInfo;
+import androidx.room.Entity;
+import androidx.room.PrimaryKey;
 
 import java.io.Serializable;
 
-public class Model implements Serializable {
-    @SerializedName("id")
+@Entity(tableName = "NewsFeed")
+public class NewsFeed implements Serializable {
+    @NonNull
+    @PrimaryKey
+    @ColumnInfo(name = "id")
     private String id;
-
-    @SerializedName("title")
+    @ColumnInfo(name = "title")
     private String title;
-
-    @SerializedName("body")
+    @ColumnInfo(name = "body")
     private String body;
-
-    @SerializedName("imageUrl")
+    @ColumnInfo(name = "imageUrl")
     private String imageUrl;
-
-    @SerializedName("author")
+    @ColumnInfo(name = "author")
     private String author;
-
-    @SerializedName("timeStamp")
+    @ColumnInfo(name = "time_stamp")
     private String timeStamp;
 
+    @NonNull
     public String getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(@NonNull String id) {
         this.id = id;
     }
 

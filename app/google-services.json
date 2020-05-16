@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "703815582377",
+    "firebase_url": "https://budgam-scouts.firebaseio.com",
+    "project_id": "budgam-scouts",
+    "storage_bucket": "budgam-scouts.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:703815582377:android:67fb3238109fb255685fb8",
+        "android_client_info": {
+          "package_name": "com.example.jkbsg"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "703815582377-4eg5ftv3t55d478vpeq6ot3pvamoogj1.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.jkbsg",
+            "certificate_hash": "5e51aa15277e319ec15952018f82cababf486c76"
+          }
+        },
+        {
+          "client_id": "703815582377-k3mu6ogdf777g2s3qg8496pj8u7ej7s9.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBGeEsU7oGjDFP1Ky_YlOhztAUVT4SbsGk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "703815582377-k3mu6ogdf777g2s3qg8496pj8u7ej7s9.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

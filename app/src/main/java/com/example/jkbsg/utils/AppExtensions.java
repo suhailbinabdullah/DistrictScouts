@@ -4,13 +4,17 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
+import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.util.Patterns;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Toast;
 
+import com.example.jkbsg.roomdb.ControlDAO;
+import com.example.jkbsg.roomdb.tables.NewsFeed;
 import com.google.android.material.textfield.TextInputEditText;
 
 import java.io.IOException;
@@ -18,6 +22,7 @@ import java.io.InputStream;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 import java.util.Locale;
 import java.util.Objects;
 import java.util.TimeZone;
@@ -138,5 +143,24 @@ public class AppExtensions {
             e.printStackTrace();
         }
         return df.format(date);
+    }
+
+    public static void insertNewsFeedDataToRoomDb(final ControlDAO controlDAO, final List<NewsFeed> posts) {
+        try {
+
+            if (controlDAO != null) {
+                if (posts != null) {
+                    AsyncTask.execute(() -> {
+                        controlDAO.insertNewsfeedData(posts);
+                        Log.i("mInsertPostsToRoomDB", "DATA INSERTED TO ROOMDB");
+                    });
+                }
+            } else {
+                Log.i("mInsertPostsToRoomDB", "DATABASE NOT INITIALIZED");
+
+            }
+        } catch (Exception ex) {
+            Log.e("mInsertPostsToRoomDB", "error" + ex);
+        }
     }
 }

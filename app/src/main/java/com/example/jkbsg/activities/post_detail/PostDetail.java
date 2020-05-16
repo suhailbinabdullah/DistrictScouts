@@ -20,7 +20,6 @@ public class PostDetail extends AppCompatActivity {
     private WebView webView;
     private String sourceButton;
     private WebSettings webSettings;
-    int flag=0;
 
 
     @SuppressLint("SetJavaScriptEnabled")
@@ -36,10 +35,8 @@ public class PostDetail extends AppCompatActivity {
             webSettings.setMediaPlaybackRequiresUserGesture(false);
         }
 
-        if (sourceButton == null && flag==0) {
+        if (sourceButton == null) {
             sourceButton = AppExtensions.getIntentString(savedInstanceState, getIntent(), AppConstants.KEY_SOURCE_ACTIVITY);
-            flag=1;
-
         }
         if (getSupportActionBar() != null) {
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -59,11 +56,11 @@ public class PostDetail extends AppCompatActivity {
                     webView.loadData(HtmlData.KEY_FUNDAMENTALS, "text/html; charset=UTF-8", null);
                     break;
                 case AppConstants.KEY_PRAYER_FLAG_SONG:
-                    webView.loadData(HtmlData.KEY_PRAYER_SONG, "text/html; charset=UTF-8", null);
+                    webView.loadUrl("file:///android_asset/prayer.html");
                     break;
 
                 case AppConstants.KEY_LAW_PROMISE:
-                    webView.loadData(HtmlData.KEY_LAW_PROMISE, "text/html; charset=UTF-8", null);
+                    webView.loadUrl("file:///android_asset/lawPromise.html");
                     break;
 
                 case AppConstants.KEY_DIST_BODY:
@@ -73,7 +70,11 @@ public class PostDetail extends AppCompatActivity {
 
                 case AppConstants.KEY_DIST_AIMS:
                     //webView.loadUrl("https://soibugh.web.app/aims_of_dist.html");
-                    webView.loadData(HtmlData.KEY_DISTRICT_AIMS, "text/html; charset=UTF-8", null);
+                    webView.loadUrl("file:///android_asset/distAimsAndObjec.html");
+                    break;
+
+                case AppConstants.KEY_SCOUTING_IN_JK:
+                    webView.loadUrl("file:///android_asset/scInJk.html");
                     break;
             }
         }

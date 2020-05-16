@@ -1,6 +1,8 @@
 package com.example.jkbsg.ui.home;
 
 import android.content.Context;
+import android.content.Intent;
+import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -8,19 +10,24 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.example.jkbsg.R;
-import com.example.jkbsg.pojos.home.Model;
-import com.example.jkbsg.pojos.home.ModelResult;
+import com.example.jkbsg.activities.post_newsfeed.PostNewsFeed;
+import com.example.jkbsg.pojos.newsfeed.NewsModel;
+import com.example.jkbsg.pojos.newsfeed.NewsResults;
+import com.example.jkbsg.utils.AppConstants;
+import com.example.jkbsg.utils.AppExtensions;
 
 public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.ViewHolder> {
     private Context context;
-    private ModelResult modelResult;
+    private NewsResults newsResults;
 
-    public HomeAdapter(Context context, ModelResult modelResult) {
+    public HomeAdapter(Context context, NewsResults newsResults) {
         this.context = context;
-        this.modelResult = modelResult;
+        this.newsResults = newsResults;
     }
 
     @NonNull
@@ -32,23 +39,44 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.ViewHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        Model currentItem = modelResult.getResults().get(position);
+        NewsModel currentItem = newsResults.getResults().get(position);
         holder.title.setText(currentItem.getTitle());
-        holder.body.setText(currentItem.getBody());
-        holder.imageView.setImageResource(R.drawable.suhail);
         holder.author.setText(currentItem.getAuthor());
-        holder.timeStamp.setText(currentItem.getTimeStamp());
+
+        String date = AppExtensions.formatDate(currentItem.getTimeStamp());
+        holder.timeStamp.setText(date);
+        String trailTextHTML = currentItem.getBody();
+        holder.body.setText(Html.fromHtml(Html.fromHtml(trailTextHTML).toString()));
+
+        if (currentItem.getImageUrl() == null) {
+            holder.imageView.setVisibility(View.GONE);
+        } else {
+            holder.imageView.setVisibility(View.VISIBLE);
+            // Load thumbnail with glide
+            Glide.with(context.getApplicationContext())
+                    .load(currentItem.getImageUrl())
+                    .into(holder.imageView);
+        }
+
+        holder.cardView.setOnClickListener(view -> {
+            Intent intent = new Intent(context, PostNewsFeed.class);
+            intent.putExtra(AppConstants.KEY_CURRENT_OBJECT, currentItem);
+            PostNewsFeed.setCurrentPost(currentItem);
+            context.startActivity(intent);
+        });
+
     }
 
     @Override
     public int getItemCount() {
-        return modelResult.getResults().size();
+        return newsResults.getResults().size();
     }
 
     class ViewHolder extends RecyclerView.ViewHolder {
 
         private TextView title, body, author, timeStamp;
         private ImageView imageView;
+        private CardView cardView;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -57,6 +85,7 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.ViewHolder> {
             author = itemView.findViewById(R.id.author);
             timeStamp = itemView.findViewById(R.id.time_stamp);
             imageView = itemView.findViewById(R.id.thumbnail_image_card);
+            cardView = itemView.findViewById(R.id.card_view);
         }
     }
 }

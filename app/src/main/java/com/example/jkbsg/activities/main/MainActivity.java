@@ -1,6 +1,7 @@
 package com.example.jkbsg.activities.main;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
@@ -17,14 +18,19 @@ import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
 import com.example.jkbsg.R;
-import com.example.jkbsg.ui.dashboard.DashboardFragment;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
 import com.google.android.gms.ads.MobileAds;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
+import com.google.firebase.iid.FirebaseInstanceId;
+import com.google.firebase.iid.InstanceIdResult;
+import com.google.firebase.messaging.FirebaseMessaging;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
+    private String TAG = MainActivity.class.getSimpleName();
 
     private NavigationView navigationView;
     private AdView adView;
@@ -39,7 +45,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
         AppBarConfiguration appBarConfiguration = new AppBarConfiguration.Builder(
-                R.id.navigation_home, R.id.navigation_dashboard, R.id.navigation_videos_library,R.id.navigation_photo_library)
+                R.id.navigation_home, R.id.navigation_dashboard, R.id.navigation_videos_library, R.id.navigation_photo_library)
                 .build();
         navController = Navigation.findNavController(this, R.id.nav_host_fragment);
         //NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
@@ -74,6 +80,31 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         // Set the default fragment when starting the app
         //onNavigationItemSelected(navigationView.getMenu().getItem(0).setChecked(true));
+
+        FirebaseInstanceId.getInstance().getInstanceId()
+                .addOnCompleteListener(new OnCompleteListener<InstanceIdResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<InstanceIdResult> task) {
+                        if (!task.isSuccessful()) {
+                            Log.w(TAG, "getInstanceId failed", task.getException());
+                            return;
+                        }
+
+                        // Get new Instance ID token
+                        String token = task.getResult().getToken();
+
+                        // Log and toast
+                        Log.e(TAG, token);
+                    }
+                });
+        FirebaseMessaging.getInstance().subscribeToTopic("global")
+                .addOnCompleteListener(task -> {
+                    String msg = "Subscribed";
+                    if (!task.isSuccessful()) {
+                        msg = "Un-Subscribed";
+                    }
+                    Log.e(TAG, msg);
+                });
     }
 
     @Override
@@ -92,7 +123,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         int id = item.getItemId();
         // Switch Fragments in a ViewPager on clicking items in Navigation Drawer
 
-        switch (id){
+        switch (id) {
             case R.id.nav_home:
                 navController.navigate(R.id.navigation_home);
                 break;
