@@ -31,6 +31,7 @@ import com.github.ybq.android.spinkit.SpinKitView;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -45,7 +46,7 @@ public class HomeFragment extends Fragment {
     private SpinKitView loader;
     private ControlDAO controlDAO;
     private List<NewsFeed> offlineposts;
-    private int flag = 0;
+
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -96,7 +97,6 @@ public class HomeFragment extends Fragment {
         return root;
     }
 
-
     private void showOfflineData() {
 
         offlineposts = controlDAO.getAllNewsFeedPosts();
@@ -122,6 +122,7 @@ public class HomeFragment extends Fragment {
             requireActivity().runOnUiThread(() ->
                     recyclerView.setAdapter(homeAdapter));
         }
+
     }
 
     @SuppressLint("StaticFieldLeak")
@@ -180,5 +181,11 @@ public class HomeFragment extends Fragment {
             });
             return null;
         }
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        //android.os.Process.killProcess(android.os.Process.myPid());
     }
 }

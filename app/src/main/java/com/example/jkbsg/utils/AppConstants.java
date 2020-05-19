@@ -17,8 +17,11 @@ public class AppConstants {
     public static final String KEY_DIST_BODY = "DISTRICT BODY";
     public static final String KEY_DIST_AIMS = "AIMS & OBJECTIVES";
     public static final String KEY_SCOUTING_IN_JK = "SCOUTING IN J&K";
+    public static final String KEY_CREATE_NEW_POST = "CREATE NEW POST";
 
     public static final String KEY_CURRENT_OBJECT = "CURRENT OBJECT";
 
     public static final String KEY_IS_NEWSFEED_VISITED = "IS_NEWSFEED_VISITED";
+    public static final String KEY_IS_PHOTOS_VISITED = "IS_PHOTOS_VISITED";
+    public static final String KEY_IS_VIDEOS_VISITED = "IS_VIDEOS_VISITED";
 }

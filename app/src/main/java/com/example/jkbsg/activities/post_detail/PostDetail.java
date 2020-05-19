@@ -1,10 +1,13 @@
 package com.example.jkbsg.activities.post_detail;
 
 import android.annotation.SuppressLint;
+import android.content.Context;
 import android.os.Build;
 import android.os.Bundle;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
+import android.webkit.WebViewClient;
+import android.widget.RelativeLayout;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -12,7 +15,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.jkbsg.R;
 import com.example.jkbsg.utils.AppConstants;
 import com.example.jkbsg.utils.AppExtensions;
-import com.example.jkbsg.utils.HtmlData;
 
 public class PostDetail extends AppCompatActivity {
     private static String TAG = PostDetail.class.getSimpleName();
@@ -20,6 +22,8 @@ public class PostDetail extends AppCompatActivity {
     private WebView webView;
     private String sourceButton;
     private WebSettings webSettings;
+    private RelativeLayout relativeLayoutMain;
+    private Context context;
 
 
     @SuppressLint("SetJavaScriptEnabled")
@@ -28,6 +32,8 @@ public class PostDetail extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_post_detail);
         webView = findViewById(R.id.web_view);
+        relativeLayoutMain = findViewById(R.id.relative_layout);
+        context = PostDetail.this;
 
         webSettings = webView.getSettings();
         webSettings.setJavaScriptEnabled(true);
@@ -43,17 +49,43 @@ public class PostDetail extends AppCompatActivity {
             getSupportActionBar().setDisplayShowHomeEnabled(true);
             getSupportActionBar().setTitle(sourceButton);
         }
+        webView.setWebViewClient(new WebViewClient() {
+            @Override
+            public boolean shouldOverrideUrlLoading(WebView view, String url) {
+
+                switch (url) {
+                    case "https://thesuhail.live/index.php?post=success":
+                        AppExtensions.showToast(context, "Post created Successfully");
+                        finish();
+                        break;
+                    case "https://thesuhail.live/index.php?clearSession=true":
+                        AppExtensions.showToast(context, "You have been logged off");
+                        finish();
+                        break;
+                    case "https://thesuhail.live/login.php":
+                    case "https://thesuhail.live/loginStudents.php":
+                        AppExtensions.showToast(context, "You are not allowed to view other client's content");
+                        finish();
+                        break;
+                    case "https://thesuhail.live/index.php":
+                        AppExtensions.showToast(context, "Your account may get blocked if you continue do random clicks");
+                        finish();
+                        break;
+                }
+                return false;
+            }
+        });
 
         if (sourceButton != null) {
             switch (sourceButton) {
                 case AppConstants.KEY_INTRODUCTION_BUTTON:
-                    webView.loadData(HtmlData.KEY_INTRODUCTION_STRING, "text/html; charset=UTF-8", null);
+                    webView.loadUrl("file:///android_asset/introduction.html");
                     break;
                 case AppConstants.KEY_WHAT_ARE_WE_BUTTON:
-                    webView.loadData(HtmlData.KEY_WHAT_ARE_WE, "text/html; charset=UTF-8", null);
+                    webView.loadUrl("file:///android_asset/whatAreWe.html");
                     break;
                 case AppConstants.KEY_FUNDAMENTALS:
-                    webView.loadData(HtmlData.KEY_FUNDAMENTALS, "text/html; charset=UTF-8", null);
+                    webView.loadUrl("file:///android_asset/fundamentals.html");
                     break;
                 case AppConstants.KEY_PRAYER_FLAG_SONG:
                     webView.loadUrl("file:///android_asset/prayer.html");
@@ -75,6 +107,11 @@ public class PostDetail extends AppCompatActivity {
 
                 case AppConstants.KEY_SCOUTING_IN_JK:
                     webView.loadUrl("file:///android_asset/scInJk.html");
+                    break;
+
+                case AppConstants.KEY_CREATE_NEW_POST:
+                    webView.loadUrl("https://thesuhail.live/newScouts.php");
+                    relativeLayoutMain.setPadding(0, 0, 0, 0);
                     break;
             }
         }

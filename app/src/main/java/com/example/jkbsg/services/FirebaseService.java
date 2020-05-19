@@ -46,6 +46,7 @@ public class FirebaseService extends FirebaseMessagingService {
         // Check if message contains a notification payload.
         if (remoteMessage.getNotification() != null) {
             Log.d(TAG, "Message Notification Body: " + remoteMessage.getNotification().getBody());
+            //Log.e(TAG,"getfrom "+remoteMessage.getFrom()+"GetTo  "+remoteMessage.getTo());
             showNotification(remoteMessage.getNotification().getTitle(),remoteMessage.getNotification().getBody());
         }
 
@@ -64,7 +65,7 @@ public class FirebaseService extends FirebaseMessagingService {
         NotificationCompat.Builder notificationBuilder =
                 new NotificationCompat.Builder(this, channelId)
                         .setSmallIcon(R.drawable.ic_notification)
-                        .setLargeIcon(BitmapFactory.decodeResource(getResources(),R.drawable.scout))
+                        .setLargeIcon(BitmapFactory.decodeResource(getResources(),R.mipmap.ic_launcher))
                         .setContentTitle(title)
                         .setContentText(body)
                         .setAutoCancel(true)

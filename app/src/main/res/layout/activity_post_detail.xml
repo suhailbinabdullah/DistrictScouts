@@ -5,6 +5,8 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
+    android:padding="10dp"
+    android:id="@+id/relative_layout"
     tools:context=".activities.post_detail.PostDetail">
 
     <com.github.ybq.android.spinkit.SpinKitView
@@ -17,8 +19,6 @@
 
     <WebView
         android:id="@+id/web_view"
-        android:layout_margin="8dp"
-        android:padding="5dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
 

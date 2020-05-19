@@ -1,5 +1,7 @@
 package com.example.jkbsg.activities.main;
 
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
@@ -18,6 +20,8 @@ import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
 import com.example.jkbsg.R;
+import com.example.jkbsg.activities.post_detail.PostDetail;
+import com.example.jkbsg.utils.AppConstants;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
 import com.google.android.gms.ads.MobileAds;
@@ -31,6 +35,7 @@ import com.google.firebase.messaging.FirebaseMessaging;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     private String TAG = MainActivity.class.getSimpleName();
+    private Context context;
 
     private NavigationView navigationView;
     private AdView adView;
@@ -40,6 +45,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        context = MainActivity.this;
         BottomNavigationView navView = findViewById(R.id.nav_view_bottom_bar);
         adView = findViewById(R.id.adView);
         // Passing each menu ID as a set of Ids because each
@@ -68,18 +74,18 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         adView.loadAd(adRequest);
 
 
-        // Give the TabLayout the ViewPager
+        //Give the TabLayout the ViewPager
         //TabLayout tabLayout = findViewById(R.id.sliding_tabs);
         //tabLayout.setupWithViewPager(viewPager);
-        // Set gravity for tab bar
-        // tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
+        //Set gravity for tab bar
+        //tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
 
         navigationView = findViewById(R.id.nav_view_drawer);
         assert navigationView != null;
         navigationView.setNavigationItemSelectedListener(this);
 
         // Set the default fragment when starting the app
-        //onNavigationItemSelected(navigationView.getMenu().getItem(0).setChecked(true));
+        onNavigationItemSelected(navigationView.getMenu().getItem(0).setChecked(true));
 
         FirebaseInstanceId.getInstance().getInstanceId()
                 .addOnCompleteListener(new OnCompleteListener<InstanceIdResult>() {
@@ -123,7 +129,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         int id = item.getItemId();
         // Switch Fragments in a ViewPager on clicking items in Navigation Drawer
 
-        switch (id) {
+        /*switch (id) {
             case R.id.nav_home:
                 navController.navigate(R.id.navigation_home);
                 break;
@@ -139,7 +145,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             case R.id.nav_budgam_scouts:
                 //navController.navigate(R.id.navigation_dashboard);
                 break;
-        }
+            case R.id.nav_login:
+                Intent intent = new Intent(context, PostDetail.class);
+                intent.putExtra(AppConstants.KEY_SOURCE_ACTIVITY, AppConstants.KEY_CREATE_NEW_POST);
+                startActivity(intent);
+        }*/
 
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);

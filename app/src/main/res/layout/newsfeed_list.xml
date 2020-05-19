@@ -62,8 +62,7 @@
                         android:layout_height="125dp"
                         android:layout_alignParentEnd="true"
                         android:layout_alignParentRight="true"
-                        android:scaleType="centerCrop"
-                        android:src="@drawable/suhail" />
+                        android:scaleType="centerCrop" />
                 </RelativeLayout>
 
                 <RelativeLayout

@@ -3,7 +3,6 @@ package com.example.jkbsg.activities.post_newsfeed;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.os.Bundle;
-import android.util.Log;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 
@@ -53,7 +52,6 @@ public class PostNewsFeed extends AppCompatActivity {
             String headline = HtmlData.KEY_HEADLINE + currentPost.getTitle() + HtmlData.KEY_HEADLINE_AUTHOR + currentPost.getAuthor().toUpperCase() + HtmlData.KEY_HEADLINE_TIME_STAMP + timeStamp + HtmlData.KEY_HEADLINE_TERMINATOR;
 
             String fullPost = headline + currentPost.getBody();
-            Log.e(TAG, fullPost);
             webView.loadData(fullPost, "text/html; charset=UTF-8", null);
         } else {
             AppExtensions.showToast(context, "Can't load the data, please try later");
