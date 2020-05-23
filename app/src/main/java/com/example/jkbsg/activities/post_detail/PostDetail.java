@@ -20,11 +20,14 @@ public class PostDetail extends AppCompatActivity {
     private static String TAG = PostDetail.class.getSimpleName();
 
     private WebView webView;
-    private String sourceButton;
+    private static String sourceButton;
     private WebSettings webSettings;
     private RelativeLayout relativeLayoutMain;
     private Context context;
 
+    public static void setSourceButton(String sourceButton) {
+        PostDetail.sourceButton = sourceButton;
+    }
 
     @SuppressLint("SetJavaScriptEnabled")
     @Override
@@ -41,9 +44,9 @@ public class PostDetail extends AppCompatActivity {
             webSettings.setMediaPlaybackRequiresUserGesture(false);
         }
 
-        if (sourceButton == null) {
+        /*if (sourceButton == null) {
             sourceButton = AppExtensions.getIntentString(savedInstanceState, getIntent(), AppConstants.KEY_SOURCE_ACTIVITY);
-        }
+        }*/
         if (getSupportActionBar() != null) {
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
             getSupportActionBar().setDisplayShowHomeEnabled(true);

@@ -33,7 +33,8 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <!--
-    ca-app-pub-3940256099942544/6300978111
+    pub  id : ca-app-pub-5436920194656522/8693882356
+    test id : ca-app-pub-3940256099942544/6300978111
     -->
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/nav_view_bottom_bar"

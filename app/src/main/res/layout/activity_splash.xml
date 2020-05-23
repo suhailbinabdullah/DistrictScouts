@@ -3,7 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorPrimary"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="#A254AA"
     tools:context=".activities.splash.Splash">
 
     <LinearLayout
@@ -12,16 +13,25 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-        <!--<pl.droidsonroids.gif.GifTextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@drawable/scout_moving" />-->
-
         <ImageView
-            android:layout_width="200dp"
-            android:layout_height="200dp"
-            android:src="@drawable/brother_hood_badge"/>
+            android:layout_marginTop="-30dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:src="@drawable/nav_bar_lg"/>
 
     </LinearLayout>
+
+    <!--<pl.droidsonroids.gif.GifTextView
+        android:layout_centerInParent="true"
+        android:layout_width="350dp"
+        android:layout_height="350dp"
+        android:background="@drawable/loader" />-->
+
+    <com.github.ybq.android.spinkit.SpinKitView
+        android:layout_width="200dp"
+        android:layout_centerInParent="true"
+        android:layout_height="180dp"
+        style="@style/SpinKitView.Large.MultiplePulseRing"
+        app:SpinKit_Color="#A254AA"/>
 
 </RelativeLayout>

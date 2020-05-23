@@ -36,11 +36,11 @@ public class DashboardFragment extends Fragment implements View.OnClickListener 
         introductionButton = root.findViewById(R.id.intro_button);
         whatAreWe = root.findViewById(R.id.what_are_we);
         fundamentals = root.findViewById(R.id.fundamentals);
-        prayerFlagSong=root.findViewById(R.id.prayer_flag_song);
-        lawPromise=root.findViewById(R.id.law_promise);
-        distBody=root.findViewById(R.id.district_body);
-        distAims=root.findViewById(R.id.district_aims);
-        scoutingInJk=root.findViewById(R.id.scouting_in_jk);
+        prayerFlagSong = root.findViewById(R.id.prayer_flag_song);
+        lawPromise = root.findViewById(R.id.law_promise);
+        distBody = root.findViewById(R.id.district_body);
+        distAims = root.findViewById(R.id.district_aims);
+        scoutingInJk = root.findViewById(R.id.scouting_in_jk);
 
         introductionButton.setOnClickListener(this);
         whatAreWe.setOnClickListener(this);
@@ -61,48 +61,48 @@ public class DashboardFragment extends Fragment implements View.OnClickListener 
                 fragment.setArguments(bundle);
                 MainActivity.navController.navigate(R.id.navigation_introduction, bundle);*/
                 intent = new Intent(context, PostDetail.class);
-                intent.putExtra(AppConstants.KEY_SOURCE_ACTIVITY, AppConstants.KEY_INTRODUCTION_BUTTON);
+                PostDetail.setSourceButton(AppConstants.KEY_INTRODUCTION_BUTTON);
                 startActivity(intent);
                 break;
             case R.id.what_are_we:
                 intent = new Intent(context, PostDetail.class);
-                intent.putExtra(AppConstants.KEY_SOURCE_ACTIVITY, AppConstants.KEY_WHAT_ARE_WE_BUTTON);
+                PostDetail.setSourceButton(AppConstants.KEY_WHAT_ARE_WE_BUTTON);
                 startActivity(intent);
                 break;
 
             case R.id.fundamentals:
                 intent = new Intent(context, PostDetail.class);
-                intent.putExtra(AppConstants.KEY_SOURCE_ACTIVITY, AppConstants.KEY_FUNDAMENTALS);
+                PostDetail.setSourceButton(AppConstants.KEY_FUNDAMENTALS);
                 startActivity(intent);
                 break;
 
             case R.id.prayer_flag_song:
                 intent = new Intent(context, PostDetail.class);
-                intent.putExtra(AppConstants.KEY_SOURCE_ACTIVITY, AppConstants.KEY_PRAYER_FLAG_SONG);
+                PostDetail.setSourceButton(AppConstants.KEY_PRAYER_FLAG_SONG);
                 startActivity(intent);
                 break;
 
             case R.id.law_promise:
                 intent = new Intent(context, PostDetail.class);
-                intent.putExtra(AppConstants.KEY_SOURCE_ACTIVITY, AppConstants.KEY_LAW_PROMISE);
+                PostDetail.setSourceButton(AppConstants.KEY_LAW_PROMISE);
                 startActivity(intent);
                 break;
 
             case R.id.district_body:
                 intent = new Intent(context, PostDetail.class);
-                intent.putExtra(AppConstants.KEY_SOURCE_ACTIVITY, AppConstants.KEY_DIST_BODY);
+                PostDetail.setSourceButton(AppConstants.KEY_DIST_BODY);
                 startActivity(intent);
                 break;
 
             case R.id.district_aims:
                 intent = new Intent(context, PostDetail.class);
-                intent.putExtra(AppConstants.KEY_SOURCE_ACTIVITY, AppConstants.KEY_DIST_AIMS);
+                PostDetail.setSourceButton(AppConstants.KEY_DIST_AIMS);
                 startActivity(intent);
                 break;
 
             case R.id.scouting_in_jk:
                 intent = new Intent(context, PostDetail.class);
-                intent.putExtra(AppConstants.KEY_SOURCE_ACTIVITY, AppConstants.KEY_SCOUTING_IN_JK);
+                PostDetail.setSourceButton(AppConstants.KEY_SCOUTING_IN_JK);
                 startActivity(intent);
                 break;
         }

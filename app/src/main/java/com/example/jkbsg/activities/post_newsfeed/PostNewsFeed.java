@@ -13,6 +13,7 @@ import com.example.jkbsg.pojos.newsfeed.NewsModel;
 import com.example.jkbsg.utils.AppExtensions;
 import com.example.jkbsg.utils.HtmlData;
 
+import java.io.UnsupportedEncodingException;
 import java.util.Objects;
 
 public class PostNewsFeed extends AppCompatActivity {
@@ -52,7 +53,15 @@ public class PostNewsFeed extends AppCompatActivity {
             String headline = HtmlData.KEY_HEADLINE + currentPost.getTitle() + HtmlData.KEY_HEADLINE_AUTHOR + currentPost.getAuthor().toUpperCase() + HtmlData.KEY_HEADLINE_TIME_STAMP + timeStamp + HtmlData.KEY_HEADLINE_TERMINATOR;
 
             String fullPost = headline + currentPost.getBody();
-            webView.loadData(fullPost, "text/html; charset=UTF-8", null);
+            //webView.loadData(fullPost, "text/html; charset=UTF-8", null);
+
+            String base64 = null;
+            try {
+                base64 = android.util.Base64.encodeToString(fullPost.getBytes("UTF-8"), android.util.Base64.DEFAULT);
+            } catch (UnsupportedEncodingException e) {
+                e.printStackTrace();
+            }
+            webView.loadData(base64, "text/html; charset=utf-8", "base64");
         } else {
             AppExtensions.showToast(context, "Can't load the data, please try later");
         }

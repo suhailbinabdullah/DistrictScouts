@@ -31,7 +31,6 @@ import com.github.ybq.android.spinkit.SpinKitView;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -46,7 +45,11 @@ public class HomeFragment extends Fragment {
     private SpinKitView loader;
     private ControlDAO controlDAO;
     private List<NewsFeed> offlineposts;
+    private static int notificationFlag = 0;
 
+    public static void setNotificationFlag(int notificationFlag) {
+        HomeFragment.notificationFlag = notificationFlag;
+    }
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -82,6 +85,9 @@ public class HomeFragment extends Fragment {
         AsyncTask.execute(this::showOfflineData);
 
         if (ConnectivityHelper.isConnected(getContext())) {
+            if (notificationFlag == 1)
+                SharedPreferenceHelper.setSharedPreferenceInt(context, AppConstants.KEY_IS_NEWSFEED_VISITED, 0);
+
             int isNewsFeedVisited = SharedPreferenceHelper.getSharedPreferenceInt(context, AppConstants.KEY_IS_NEWSFEED_VISITED);
             if (isNewsFeedVisited == 0) {
                 new GetNewsFeedData().execute();
@@ -183,9 +189,9 @@ public class HomeFragment extends Fragment {
         }
     }
 
-    @Override
+    /*@Override
     public void onDestroy() {
         super.onDestroy();
-        //android.os.Process.killProcess(android.os.Process.myPid());
-    }
+        android.os.Process.killProcess(android.os.Process.myPid());
+    }*/
 }

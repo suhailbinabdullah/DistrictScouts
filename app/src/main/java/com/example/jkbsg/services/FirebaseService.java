@@ -15,6 +15,7 @@ import androidx.core.app.NotificationCompat;
 
 import com.example.jkbsg.R;
 import com.example.jkbsg.activities.main.MainActivity;
+import com.example.jkbsg.ui.home.HomeFragment;
 import com.google.firebase.messaging.FirebaseMessagingService;
 import com.google.firebase.messaging.RemoteMessage;
 
@@ -47,7 +48,7 @@ public class FirebaseService extends FirebaseMessagingService {
         if (remoteMessage.getNotification() != null) {
             Log.d(TAG, "Message Notification Body: " + remoteMessage.getNotification().getBody());
             //Log.e(TAG,"getfrom "+remoteMessage.getFrom()+"GetTo  "+remoteMessage.getTo());
-            showNotification(remoteMessage.getNotification().getTitle(),remoteMessage.getNotification().getBody());
+            showNotification(remoteMessage.getNotification().getTitle(), remoteMessage.getNotification().getBody());
         }
 
         // Also if you intend on generating your own notifications as a result of a received FCM
@@ -55,6 +56,7 @@ public class FirebaseService extends FirebaseMessagingService {
     }
 
     private void showNotification(String title, String body) {
+        HomeFragment.setNotificationFlag(1);
         Intent intent = new Intent(this, MainActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         PendingIntent pendingIntent = PendingIntent.getActivity(this, 0 /* Request code */, intent,
@@ -65,7 +67,7 @@ public class FirebaseService extends FirebaseMessagingService {
         NotificationCompat.Builder notificationBuilder =
                 new NotificationCompat.Builder(this, channelId)
                         .setSmallIcon(R.drawable.ic_notification)
-                        .setLargeIcon(BitmapFactory.decodeResource(getResources(),R.mipmap.ic_launcher))
+                        .setLargeIcon(BitmapFactory.decodeResource(getResources(), R.mipmap.ic_launcher))
                         .setContentTitle(title)
                         .setContentText(body)
                         .setAutoCancel(true)

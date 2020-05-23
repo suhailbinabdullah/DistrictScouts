@@ -20,8 +20,12 @@ import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
 import com.example.jkbsg.R;
+import com.example.jkbsg.activities.developer_contact.Contact;
+import com.example.jkbsg.activities.developer_contact.Developer;
 import com.example.jkbsg.activities.post_detail.PostDetail;
 import com.example.jkbsg.utils.AppConstants;
+import com.example.jkbsg.utils.AppExtensions;
+import com.example.jkbsg.utils.ConnectivityHelper;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
 import com.google.android.gms.ads.MobileAds;
@@ -32,6 +36,8 @@ import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.iid.FirebaseInstanceId;
 import com.google.firebase.iid.InstanceIdResult;
 import com.google.firebase.messaging.FirebaseMessaging;
+
+import java.util.Objects;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     private String TAG = MainActivity.class.getSimpleName();
@@ -97,7 +103,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                         }
 
                         // Get new Instance ID token
-                        String token = task.getResult().getToken();
+                        String token = Objects.requireNonNull(task.getResult()).getToken();
 
                         // Log and toast
                         Log.e(TAG, token);
@@ -129,7 +135,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         int id = item.getItemId();
         // Switch Fragments in a ViewPager on clicking items in Navigation Drawer
 
-        /*switch (id) {
+        switch (id) {
             case R.id.nav_home:
                 navController.navigate(R.id.navigation_home);
                 break;
@@ -143,13 +149,21 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 navController.navigate(R.id.navigation_photo_library);
                 break;
             case R.id.nav_budgam_scouts:
-                //navController.navigate(R.id.navigation_dashboard);
+                startActivity(new Intent(context, Developer.class));
                 break;
             case R.id.nav_login:
-                Intent intent = new Intent(context, PostDetail.class);
-                intent.putExtra(AppConstants.KEY_SOURCE_ACTIVITY, AppConstants.KEY_CREATE_NEW_POST);
-                startActivity(intent);
-        }*/
+                if (ConnectivityHelper.isConnected(context)) {
+                    Intent intent = new Intent(context, PostDetail.class);
+                    PostDetail.setSourceButton(AppConstants.KEY_CREATE_NEW_POST);
+                    startActivity(intent);
+                } else {
+                    AppExtensions.showToast(context, "You are not connected to Internet");
+                }
+                break;
+            case R.id.nav_contacts:
+                startActivity(new Intent(context, Contact.class));
+                break;
+        }
 
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);

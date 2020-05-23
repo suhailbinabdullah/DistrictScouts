@@ -163,4 +163,10 @@ public class AppExtensions {
             Log.e("mInsertPostsToRoomDB", "error" + ex);
         }
     }
+
+    public static void callIntent(Context context, String url) {
+        Uri uri = Uri.parse(url);
+        Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+        context.startActivity(intent);
+    }
 }

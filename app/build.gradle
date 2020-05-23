@@ -69,5 +69,5 @@ dependencies {
     annotationProcessor 'android.arch.persistence.room:compiler:1.1.1'
 
     //make gif working for splash
-    //implementation 'pl.droidsonroids.gif:android-gif-drawable:1.2.10'
+//    implementation 'pl.droidsonroids.gif:android-gif-drawable:1.2.10'
 }

@@ -1,4 +1,4 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <string name="app_name">BSG Budgam</string>
     <string name="title_home">Home</string>
     <string name="title_dashboard">Dashboard</string>
@@ -15,4 +15,8 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="default_notification_channel_id">fcm_default_channel</string>
+    <string name="developer_body">It was the year 2007 when I joined scouting and since then I am engaged with this wonderful Organization. For the first 6-7 years I was actively associated with all the activities &amp; was performing my duties as District Training Counselor. \nIn pursuance of other commitments of my life , in 2015  I left the valley for professional education and the fact of the matter is my love towards scouting never vanished. My district association has unwaveringly encouraged me and kept pushing me to explore the opportunities to improve my scouting career. In the meantime as I was out of state the administration of the organisation assigned me the post (PRO) in District  which can be done passively . I have always looked for ways so as to contribute towards the betterment of District whatever little I can  do at individual level. In addition to this I am also looking forward to exploit every  opportunities so as to put them at the disposal of our sports loving younger generation.\n\nSo Being an IT professional &amp; passionate  scout lover , Simultaneously I have developed this android app in my personal capacity which I hope will serve a good purpose. I am hoping this inclusive platform will bring us more closer and will  raise  our passions. Your suggestions regarding the app will be highly appreciated as this app is in its initial stage. I can be reached at below mentioned links</string>
+
+    <string name="address_contact" tools:ignore="TypographyDashes"><![CDATA[J&K Bharat Scouts and Guides,\nC/o: SHQ, Scout Hut, Youth Hostel Premises, Wazir Bagh Srinagar-190001\nTele/fax: 0194-2310378\nMobile: +91-7006840021, +91-9906602458, +91-9622536225\nEmail: jkbsgbudgam@gmail.com]]></string>
+    <string name="account_details">Branch: Main Branch Magam.\nA/c holder name: J&amp;K State Bharat Scouts and Guides, Budgam.\nBank: J&amp;K Bank\nIFSC code: JAKA0MAGGAM\nMICR code: 191051014</string>
 </resources>
