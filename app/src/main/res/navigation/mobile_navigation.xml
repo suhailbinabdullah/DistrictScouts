@@ -7,25 +7,25 @@
 
     <fragment
         android:id="@+id/navigation_home"
-        android:name="com.example.jkbsg.ui.home.HomeFragment"
+        android:name="com.suhail.bsgbudgam.ui.home.HomeFragment"
         android:label="@string/title_home"
         tools:layout="@layout/fragment_home" />
 
     <fragment
         android:id="@+id/navigation_dashboard"
-        android:name="com.example.jkbsg.ui.dashboard.DashboardFragment"
+        android:name="com.suhail.bsgbudgam.ui.dashboard.DashboardFragment"
         android:label="@string/title_dashboard"
         tools:layout="@layout/fragment_dashboard" />
 
     <fragment
         android:id="@+id/navigation_videos_library"
-        android:name="com.example.jkbsg.ui.videos.VideosFragment"
+        android:name="com.suhail.bsgbudgam.ui.videos.VideosFragment"
         android:label="@string/title_video_library"
         tools:layout="@layout/fragment_videos" />
 
     <fragment
         android:id="@+id/navigation_photo_library"
-        android:name="com.example.jkbsg.ui.photos.PhotosFragment"
+        android:name="com.suhail.bsgbudgam.ui.photos.PhotosFragment"
         android:label="@string/title_photo_library"
         tools:layout="@layout/fragment_photos" />
 </navigation>

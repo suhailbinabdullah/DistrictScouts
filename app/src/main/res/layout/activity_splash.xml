@@ -8,16 +8,16 @@
     tools:context=".activities.splash.Splash">
 
     <LinearLayout
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_centerInParent="true"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:orientation="vertical">
 
         <ImageView
-            android:layout_marginTop="-30dp"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:src="@drawable/nav_bar_lg"/>
+            android:layout_height="match_parent"
+            android:scaleType="centerCrop"
+            android:src="@drawable/app_icon"/>
 
     </LinearLayout>
 
@@ -28,10 +28,10 @@
         android:background="@drawable/loader" />-->
 
     <com.github.ybq.android.spinkit.SpinKitView
-        android:layout_width="200dp"
+        android:layout_width="wrap_content"
         android:layout_centerInParent="true"
-        android:layout_height="180dp"
-        style="@style/SpinKitView.Large.MultiplePulseRing"
-        app:SpinKit_Color="#A254AA"/>
+        android:layout_height="wrap_content"
+        style="@style/SpinKitView.Circle"
+        app:SpinKit_Color="@color/colorWhite"/>
 
 </RelativeLayout>
