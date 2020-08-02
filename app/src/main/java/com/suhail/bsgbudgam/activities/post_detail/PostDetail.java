@@ -2,6 +2,7 @@ package com.suhail.bsgbudgam.activities.post_detail;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.webkit.WebSettings;
@@ -13,6 +14,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.suhail.bsgbudgam.R;
+import com.suhail.bsgbudgam.activities.facebook_feed.FacebookFeedActivity;
 import com.suhail.bsgbudgam.utils.AppConstants;
 import com.suhail.bsgbudgam.utils.AppExtensions;
 
@@ -73,6 +75,11 @@ public class PostDetail extends AppCompatActivity {
                     case "https://thesuhail.live/index.php":
                         AppExtensions.showToast(context, "Your account may get blocked if you continue do random clicks");
                         finish();
+                        break;
+
+                    case "https://www.facebook.com/JK-Bharat-Scouts-and-Guides-Budgam-111903547186289/":
+                        finish();
+                        startActivity(new Intent(context, FacebookFeedActivity.class));
                         break;
                 }
                 return false;

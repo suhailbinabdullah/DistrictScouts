@@ -12,13 +12,15 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme.NoActionBar">
-        <activity android:name="com.suhail.bsgbudgam.activities.developer_contact.Contact"
-            android:theme="@style/SettingsTheme"/>
+        <activity android:name=".activities.facebook_feed.FacebookFeedActivity"></activity>
         <activity
-            android:name="com.suhail.bsgbudgam.activities.developer_contact.Developer"
+            android:name=".activities.developer_contact.Contact"
             android:theme="@style/SettingsTheme" />
         <activity
-            android:name="com.suhail.bsgbudgam.activities.splash.Splash"
+            android:name=".activities.developer_contact.Developer"
+            android:theme="@style/SettingsTheme" />
+        <activity
+            android:name=".activities.splash.Splash"
             android:theme="@style/Theme.AppCompat.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -27,27 +29,28 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.suhail.bsgbudgam.activities.post_newsfeed.PostNewsFeed"
+            android:name=".activities.post_newsfeed.PostNewsFeed"
             android:theme="@style/SettingsTheme" />
         <activity
-            android:name="com.suhail.bsgbudgam.activities.post_photos.PostPhotos"
+            android:name=".activities.post_photos.PostPhotos"
             android:theme="@style/SettingsTheme" />
         <activity
-            android:name="com.suhail.bsgbudgam.activities.post_videos.PostYoutubeActivity"
+            android:name=".activities.post_videos.PostYoutubeActivity"
             android:theme="@style/SettingsTheme" />
         <activity
-            android:name="com.suhail.bsgbudgam.activities.post_detail.PostDetail"
+            android:name=".activities.post_detail.PostDetail"
             android:theme="@style/SettingsTheme" />
         <activity
-            android:name="com.suhail.bsgbudgam.activities.main.MainActivity"
+            android:name=".activities.main.MainActivity"
             android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar" /> <!-- Sample AdMob App ID: ca-app-pub-9581166139575953~3149353582 -->
-                                                            <!-- Pub ID: ca-app-pub-5436920194656522~2152045804 -->
-        <!--<meta-data
+        <!-- Pub ID: ca-app-pub-5436920194656522~2152045804 -->
+        <!--
+<meta-data
             android:name="com.google.android.gms.ads.APPLICATION_ID"
-            android:value="ca-app-pub-9581166139575953~3149353582" />-->
-
-        <service android:name="com.suhail.bsgbudgam.services.FirebaseService">
+            android:value="ca-app-pub-9581166139575953~3149353582" />
+        -->
+        <service android:name=".services.FirebaseService">
             <intent-filter>
                 <action android:name="com.google.firebase.MESSAGING_EVENT" />
             </intent-filter>

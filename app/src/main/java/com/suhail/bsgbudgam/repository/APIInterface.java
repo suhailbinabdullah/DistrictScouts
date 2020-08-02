@@ -1,6 +1,7 @@
 package com.suhail.bsgbudgam.repository;
 
 import com.suhail.bsgbudgam.pojos.albums.AlbumResults;
+import com.suhail.bsgbudgam.pojos.facebook.FacebookFeedResult;
 import com.suhail.bsgbudgam.pojos.newsfeed.NewsResults;
 
 import retrofit2.Call;
@@ -20,4 +21,8 @@ public interface APIInterface {
     @Headers({"Content-Type: application/json"})
     @GET("newsfeed.php?")
     Call<NewsResults> getNewsFeedData();
+
+    @Headers({"Content-Type: application/json"})
+    @GET("scoutsFacebookFeed.php")
+    Call<FacebookFeedResult> getFacebookFeed();
 }

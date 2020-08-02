@@ -29,6 +29,7 @@ import com.google.firebase.messaging.FirebaseMessaging;
 import com.suhail.bsgbudgam.R;
 import com.suhail.bsgbudgam.activities.developer_contact.Contact;
 import com.suhail.bsgbudgam.activities.developer_contact.Developer;
+import com.suhail.bsgbudgam.activities.facebook_feed.FacebookFeedActivity;
 import com.suhail.bsgbudgam.activities.post_detail.PostDetail;
 import com.suhail.bsgbudgam.utils.AppConstants;
 import com.suhail.bsgbudgam.utils.AppExtensions;
@@ -37,12 +38,11 @@ import com.suhail.bsgbudgam.utils.ConnectivityHelper;
 import java.util.Objects;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
+    //    private AdView adView;
+    public static NavController navController;
     private String TAG = MainActivity.class.getSimpleName();
     private Context context;
-
     private NavigationView navigationView;
-//    private AdView adView;
-    public static NavController navController;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -156,6 +156,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 } else {
                     AppExtensions.showToast(context, "You are not connected to Internet");
                 }
+                //startActivity(new Intent(context, FacebookFeedActivity.class));
                 break;
             case R.id.nav_contacts:
                 startActivity(new Intent(context, Contact.class));

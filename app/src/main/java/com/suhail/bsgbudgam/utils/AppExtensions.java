@@ -27,7 +27,8 @@ import java.util.Locale;
 import java.util.Objects;
 import java.util.TimeZone;
 
-public class AppExtensions {
+public class
+AppExtensions {
 
     public static String loadJSONFromAsset(Context context, String assetName) {
         String json = null;
@@ -144,6 +145,32 @@ public class AppExtensions {
         }
         return df.format(date);
     }
+
+
+    public static String formatFacebookDate(String dateStringUTC) {
+        // Parse the dateString into a Date object
+        SimpleDateFormat simpleDateFormat =
+                new SimpleDateFormat("yyyy-MM-dd'T'kk:mm:ss");
+        Date dateObject = null;
+        try {
+            dateObject = simpleDateFormat.parse(dateStringUTC);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        SimpleDateFormat df = new SimpleDateFormat("MMM d, yyyy  h:mm a", Locale.ENGLISH);
+        String formattedDateUTC = df.format(dateObject);
+        df.setTimeZone(TimeZone.getTimeZone("UTC"));
+        Date date = null;
+        try {
+            date = df.parse(formattedDateUTC);
+            df.setTimeZone(TimeZone.getDefault());
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        return df.format(date);
+    }
+
+
 
     public static void insertNewsFeedDataToRoomDb(final ControlDAO controlDAO, final List<NewsFeed> posts) {
         try {
